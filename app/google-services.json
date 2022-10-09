@@ -1,34 +1,33 @@
 {
   "project_info": {
-    "project_number": "540487238634",
-    "firebase_url": "https://theattic-af126-default-rtdb.firebaseio.com",
-    "project_id": "theattic-af126",
-    "storage_bucket": "theattic-af126.appspot.com"
+    "project_number": "920888657431",
+    "project_id": "handoff-177ae",
+    "storage_bucket": "handoff-177ae.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:540487238634:android:0a4b3ba10fe214dee1a893",
+        "mobilesdk_app_id": "1:920888657431:android:ae3db0a2d5fb783da43e52",
         "android_client_info": {
-          "package_name": "com.yegonron.theattic"
+          "package_name": "com.yegonron.handoff"
         }
       },
       "oauth_client": [
         {
-          "client_id": "540487238634-joknddf0amlfvs0asu00ufq98bcb57ec.apps.googleusercontent.com",
+          "client_id": "920888657431-9uiaqatvfbaoj7pek4ieuhjdh1v281o3.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB16Y1oMMeOoaA01lXrowkyli0SbGnpDs8"
+          "current_key": "AIzaSyB-REhvnIOqAowiAS4cUcQbdbU9Z1TDELw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "540487238634-joknddf0amlfvs0asu00ufq98bcb57ec.apps.googleusercontent.com",
+              "client_id": "920888657431-9uiaqatvfbaoj7pek4ieuhjdh1v281o3.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

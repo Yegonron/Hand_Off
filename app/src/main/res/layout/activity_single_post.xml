@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/wood"
+    android:background="@color/green"
     android:layout_height="wrap_content"
     tools:context=".SinglePostActivity">
 
@@ -107,7 +107,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:scaleType="centerCrop"
-                                android:src="@drawable/wood" />
+                                android:src="@drawable/icon" />
 
                         </androidx.cardview.widget.CardView>
                     </RelativeLayout>
