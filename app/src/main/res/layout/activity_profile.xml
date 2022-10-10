@@ -17,50 +17,148 @@
         app:logo="@mipmap/ic_launcher"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@id/tool_bar"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="10dp"
+        android:layout_centerHorizontal="true">
 
-        android:background="@drawable/layoutsyle"
-        android:orientation="vertical">
-
-
-        <ImageButton
-            android:id="@+id/imagebutton"
-            android:layout_width="250dp"
-            android:layout_height="200dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/add_profile"
-            android:contentDescription="TODO" />
-
-        <EditText
-
-            android:id="@+id/profUserName"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/buttonstyle"
-            android:hint="Enter Display name"
-            android:padding="16dp" />
 
-        <Button
-            android:id="@+id/doneBtn"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="16dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/action_button_style"
-            android:text="Done"
-            android:textAllCaps="false"
-            android:textColor="#ffffff"
-            android:textStyle="bold" />
+            android:layout_margin="10dp"
+            android:background="@drawable/layoutsyle"
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <ImageButton
+                android:id="@+id/imagebutton"
+                android:layout_width="250dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:contentDescription="TODO"
+                android:scaleType="centerCrop"
+                android:src="@drawable/add_profile" />
+
+            <EditText
+                android:id="@+id/profUserName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/buttonstyle"
+                android:hint="Enter Display name"
+                android:padding="16dp" />
+
+            <EditText
+                android:id="@+id/profSurName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/buttonstyle"
+                android:hint="Enter Surname"
+                android:padding="16dp" />
+
+            <EditText
+                android:id="@+id/profFirstName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/buttonstyle"
+                android:hint="Enter First name"
+                android:padding="16dp" />
+
+            <EditText
+                android:id="@+id/profLastName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/buttonstyle"
+                android:hint="Enter Last name"
+                android:padding="16dp" />
+
+            <EditText
+                android:id="@+id/profDateOfBirth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/buttonstyle"
+                android:hint="Enter Date Of Birth"
+                android:inputType="date"
+                android:padding="16dp" />
+
+            <EditText
+                android:id="@+id/profPhoneNo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/buttonstyle"
+                android:hint="Enter Phone Number"
+                android:inputType="phone"
+                android:padding="16dp" />
+
+            <EditText
+                android:id="@+id/profTeamName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/buttonstyle"
+                android:hint="Enter Team Name"
+                android:padding="16dp" />
+
+            <EditText
+                android:id="@+id/profPlayerPosition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/buttonstyle"
+                android:hint="Enter Player Position"
+                android:padding="16dp" />
+
+            <EditText
+                android:id="@+id/profKitSize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/buttonstyle"
+                android:hint="Enter Kit Size"
+                android:padding="16dp" />
+
+            <EditText
+                android:id="@+id/profBootSize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/buttonstyle"
+                android:hint="Enter Boot Size"
+                android:inputType="number"
+                android:padding="16dp" />
+
+            <Button
+                android:id="@+id/doneBtn"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/action_button_style"
+                android:text="Done"
+                android:textAllCaps="false"
+                android:textColor="#ffffff"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
 </RelativeLayout>

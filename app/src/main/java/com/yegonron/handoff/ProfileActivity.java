@@ -28,8 +28,9 @@ import java.util.Objects;
 public class ProfileActivity extends AppCompatActivity {
 
     // Declare instances if the views
-    private EditText profUserName;
+    private EditText profUserName, profSurName, profFirstName, profLastName, profDateOfBirth, profPhoneNo, profTeamName, profPlayerPosition, profKitSize, profBootSize;
     private ImageButton imageButton;
+
     //Declare an Instance of the database reference  where we will be saving the profile photo and custom display name
     private DatabaseReference mDatabaseUser;
     //Declare an Instance of the Storage reference where we will upload the photo
@@ -51,6 +52,15 @@ public class ProfileActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         //Initialize the  instances of the views
         profUserName = findViewById(R.id.profUserName);
+        profSurName = findViewById(R.id.profSurName);
+        profFirstName = findViewById(R.id.profFirstName);
+        profLastName = findViewById(R.id.profLastName);
+        profDateOfBirth = findViewById(R.id.profDateOfBirth);
+        profPhoneNo = findViewById(R.id.profPhoneNo);
+        profTeamName = findViewById(R.id.profTeamName);
+        profPlayerPosition = findViewById(R.id.profPlayerPosition);
+        profKitSize = findViewById(R.id.profKitSize);
+        profBootSize = findViewById(R.id.profBootSize);
         imageButton = findViewById(R.id.imagebutton);
         Button doneBtn = findViewById(R.id.doneBtn);
         //Initialize the instance of Firebase authentications
@@ -74,9 +84,20 @@ public class ProfileActivity extends AppCompatActivity {
         // on clicking the images we want to get the name and the profile photo, then later save this on a database reference for users
         doneBtn.setOnClickListener(view -> {
             //get the custom display name entered by the user
-            final String name = profUserName.getText().toString().trim();
+            final String userName = profUserName.getText().toString().trim();
+            final String surName = profSurName.getText().toString().trim();
+            final String firstName = profFirstName.getText().toString().trim();
+            final String lastName = profLastName.getText().toString().trim();
+            final String dateOfBirth = profDateOfBirth.getText().toString().trim();
+            final String phoneNo = profPhoneNo.getText().toString().trim();
+            final String teamName = profTeamName.getText().toString().trim();
+            final String playerPosition = profPlayerPosition.getText().toString().trim();
+            final String kitSize = profKitSize.getText().toString().trim();
+            final String bootSize = profBootSize.getText().toString().trim();
+            final String timeStamp = "" + System.currentTimeMillis();
+
             //validate to ensure that the name and profile image are not null
-            if (!TextUtils.isEmpty(name) && profileImageUri != null) {
+            if (!TextUtils.isEmpty(userName) && profileImageUri != null) {
 
                 //create Storage reference node, inside profile_image storage reference where you will save the profile image
                 StorageReference profileImagePath = mStorageRef.child("profile_images").child(profileImageUri.getLastPathSegment());
@@ -98,8 +119,20 @@ public class ProfileActivity extends AppCompatActivity {
                                 mDatabaseUser.addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                        //add the profilePhoto and displayName for the current user
-                                        mDatabaseUser.child("displayName").setValue(name);
+                                        //add data for the current user
+                                        mDatabaseUser.child("displayName").setValue(userName);
+                                        mDatabaseUser.child("surName").setValue(surName);
+                                        mDatabaseUser.child("firstName").setValue(firstName);
+                                        mDatabaseUser.child("lastName").setValue(lastName);
+                                        mDatabaseUser.child("dateOfBirth").setValue(dateOfBirth);
+                                        mDatabaseUser.child("phoneNo").setValue(phoneNo);
+                                        mDatabaseUser.child("teamName").setValue(teamName);
+                                        mDatabaseUser.child("playerPosition").setValue(playerPosition);
+                                        mDatabaseUser.child("bootSize").setValue(bootSize);
+                                        mDatabaseUser.child("kitSize").setValue(kitSize);
+                                        mDatabaseUser.child("timeStamp").setValue(timeStamp);
+                                        mDatabaseUser.child("online").setValue("true");
+                                        mDatabaseUser.child("accountType").setValue("Player");
                                         mDatabaseUser.child("profilePhoto").setValue(profileImage).addOnCompleteListener(task -> {
                                             if (task.isSuccessful()) {
                                                 //show a toast to indicate the profile was updated

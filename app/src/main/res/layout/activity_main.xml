@@ -15,8 +15,7 @@
         android:background="#1A1A1A"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:logo="@mipmap/ic_launcher"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     <include layout="@layout/content_main" />
 
