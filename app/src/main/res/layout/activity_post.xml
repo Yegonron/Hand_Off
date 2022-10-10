@@ -8,14 +8,13 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tool_bar"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="60dp"
         android:layout_alignParentTop="true"
         android:background="#000000"
         android:padding="10dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:logo="@mipmap/ic_launcher"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:titleTextAppearance="@style/app_title" />
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     <ScrollView xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/scrollView"
@@ -37,7 +36,8 @@
                 android:adjustViewBounds="true"
                 android:background="#fff"
                 android:scaleType="centerCrop"
-                android:src="@drawable/add_photo" />
+                android:src="@drawable/add_photo"
+                android:contentDescription="TODO" />
 
             <EditText
                 android:id="@+id/textTitle"

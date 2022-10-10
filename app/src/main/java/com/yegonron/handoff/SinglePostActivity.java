@@ -39,7 +39,8 @@ import java.util.Objects;
 public class SinglePostActivity extends AppCompatActivity {
 
     private ImageView singelImage;
-    private TextView singleTitle, singleDesc, postComment;
+    private TextView singleTitle;
+    private TextView singleDesc;
     String post_key = null;
     private DatabaseReference mDatabase, commentRef, mDatabaseUsers;
     private Button deleteBtn;
@@ -73,7 +74,7 @@ public class SinglePostActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
 
-        postComment = findViewById(R.id.postComment);
+        TextView postComment = findViewById(R.id.postComment);
         makeComment = findViewById(R.id.editTextcomment);
 
         post_key = getIntent().getExtras().getString("PostID");
@@ -92,15 +93,12 @@ public class SinglePostActivity extends AppCompatActivity {
         deleteBtn = findViewById(R.id.deleteBtn);
         mAuth = FirebaseAuth.getInstance();
         deleteBtn.setVisibility(View.INVISIBLE);
-        deleteBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        deleteBtn.setOnClickListener(view -> {
 
-                mDatabase.child(post_key).removeValue();
+            mDatabase.child(post_key).removeValue();
 
-                Intent mainintent = new Intent(SinglePostActivity.this, MainActivity.class);
-                startActivity(mainintent);
-            }
+            Intent mainintent = new Intent(SinglePostActivity.this, MainActivity.class);
+            startActivity(mainintent);
         });
 
 
@@ -126,45 +124,42 @@ public class SinglePostActivity extends AppCompatActivity {
 
             }
         });
-        postComment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        postComment.setOnClickListener(v -> {
 
-                Toast.makeText(SinglePostActivity.this, "POSTING...", Toast.LENGTH_LONG).show();
-                //get the comment from the edit texts
-                final String comment = makeComment.getText().toString().trim();
-                //get the date and time of the post
+            Toast.makeText(SinglePostActivity.this, "POSTING...", Toast.LENGTH_LONG).show();
+            //get the comment from the edit texts
+            final String comment = makeComment.getText().toString().trim();
+            //get the date and time of the post
 
-                java.util.Calendar calendar = Calendar.getInstance();
-                SimpleDateFormat currentDate = new SimpleDateFormat("dd-MM-yyyy");
-                final String saveCurrentDate = currentDate.format(calendar.getTime());
+            Calendar calendar = Calendar.getInstance();
+            SimpleDateFormat currentDate = new SimpleDateFormat("dd-MM-yyyy");
+            final String saveCurrentDate = currentDate.format(calendar.getTime());
 
-                java.util.Calendar calendar1 = Calendar.getInstance();
-                SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm");
-                final String saveCurrentTime = currentTime.format(calendar1.getTime());
-                // do a check for empty fields
-                if (!TextUtils.isEmpty(comment)) {
-                    final DatabaseReference newComment = commentRef.push();
-                    mDatabaseUsers.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            newComment.child("comment").setValue(comment);
-                            newComment.child("uid").setValue(mCurrentUser.getUid());
-                            newComment.child("time").setValue(saveCurrentTime);
-                            newComment.child("date").setValue(saveCurrentDate);
-                            newComment.child("profilePhoto").setValue(dataSnapshot.child("profilePhoto").getValue());
-                            newComment.child("displayName").setValue(dataSnapshot.child("displayName").getValue());
-                        }
+            Calendar calendar1 = Calendar.getInstance();
+            SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm");
+            final String saveCurrentTime = currentTime.format(calendar1.getTime());
+            // do a check for empty fields
+            if (!TextUtils.isEmpty(comment)) {
+                final DatabaseReference newComment = commentRef.push();
+                mDatabaseUsers.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        newComment.child("comment").setValue(comment);
+                        newComment.child("uid").setValue(mCurrentUser.getUid());
+                        newComment.child("time").setValue(saveCurrentTime);
+                        newComment.child("date").setValue(saveCurrentDate);
+                        newComment.child("profilePhoto").setValue(dataSnapshot.child("profilePhoto").getValue());
+                        newComment.child("displayName").setValue(dataSnapshot.child("displayName").getValue());
+                    }
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                        }
-                    });
-
-                }
+                    }
+                });
 
             }
+
         });
     }
 
@@ -188,20 +183,13 @@ public class SinglePostActivity extends AppCompatActivity {
         //create and initialize an instance of Query that retrieves all posts uploaded
         Query query = FirebaseDatabase.getInstance().getReference().child("Comments").child(post_key);
         // Create and initialize and instance of Recycler Options passing in your model class and
+        //Create a snap shot of your model
         FirebaseRecyclerOptions<CommentModel> options = new FirebaseRecyclerOptions.Builder<CommentModel>().
-                setQuery(query, new SnapshotParser<CommentModel>() {
-                    @NonNull
-                    @Override
-                    //Create a snap shot of your model
-                    public CommentModel parseSnapshot(@NonNull DataSnapshot snapshot) {
-                        return new CommentModel(Objects.requireNonNull(snapshot.child("displayName").getValue()).toString(),
-                                Objects.requireNonNull(snapshot.child("profilePhoto").getValue()).toString(),
-                                Objects.requireNonNull(snapshot.child("comment").getValue()).toString(),
-                                Objects.requireNonNull(snapshot.child("time").getValue()).toString(),
-                                Objects.requireNonNull(snapshot.child("date").getValue()).toString());
-
-                    }
-                })
+                setQuery(query, snapshot -> new CommentModel(Objects.requireNonNull(snapshot.child("displayName").getValue()).toString(),
+                        Objects.requireNonNull(snapshot.child("profilePhoto").getValue()).toString(),
+                        Objects.requireNonNull(snapshot.child("comment").getValue()).toString(),
+                        Objects.requireNonNull(snapshot.child("time").getValue()).toString(),
+                        Objects.requireNonNull(snapshot.child("date").getValue()).toString()))
                 .build();
         // crate a fire base adapter passing in the model, an a View holder
         // Create a  new ViewHolder as a public inner class that extends RecyclerView.Holder, outside the create , start and update the Ui methods.
@@ -251,11 +239,11 @@ public class SinglePostActivity extends AppCompatActivity {
     public static class commentModelViewHolder extends RecyclerView.ViewHolder {
         //Declare the view objects in the card view
 
-        public TextView commenterName;
-        public ImageView commenterimage;
-        public TextView commentTime;
-        public TextView commentDate;
-        public TextView the_comment;
+        public final TextView commenterName;
+        public final ImageView commenterimage;
+        public final TextView commentTime;
+        public final TextView commentDate;
+        public final TextView the_comment;
 
         //Declare a string variable to hold  the user ID of currently logged in user
         String currentUserID;

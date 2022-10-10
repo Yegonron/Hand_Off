@@ -15,8 +15,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
-            android:name="com.yegonron.handoff.SinglePostActivity"
+            android:name="com.yegonron.handoff.AboutUsActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.yegonron.handoff.AttendanceActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.yegonron.handoff.ForgetPasswordActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.yegonron.handoff.GameFixturesActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.yegonron.handoff.HelpActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.yegonron.handoff.LeagueTableActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.yegonron.handoff.LivestreamGamesActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.yegonron.handoff.MainActivity"
             android:exported="true" />
         <activity
             android:name="com.yegonron.handoff.PostActivity"
@@ -25,17 +47,27 @@
             android:name="com.yegonron.handoff.ProfileActivity"
             android:exported="true" />
         <activity
-            android:name="com.yegonron.handoff.MainActivity"
+            android:name="com.yegonron.handoff.ProfileEditActivity"
             android:exported="true" />
-
+        <activity
+            android:name="com.yegonron.handoff.RecordGameFixturesActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.yegonron.handoff.RecordPlayerAttendanceActivity"
+            android:exported="true" />
         <activity
             android:name="com.yegonron.handoff.RegisterActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.yegonron.handoff.SettingsActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.yegonron.handoff.SinglePostActivity"
             android:exported="true" />
 
         <activity
             android:name="com.yegonron.handoff.LoginActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

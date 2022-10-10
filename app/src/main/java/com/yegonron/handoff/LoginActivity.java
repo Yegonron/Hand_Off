@@ -1,21 +1,17 @@
 package com.yegonron.handoff;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -30,8 +26,6 @@ public class LoginActivity extends AppCompatActivity {
     private EditText loginEmail, loginPass;
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabaseUsers;
-    private Button loginBtn;
-    private TextView signUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,55 +35,50 @@ public class LoginActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
         //Initialize the views
-        loginBtn = findViewById(R.id.loginBtn);
+        Button loginBtn = findViewById(R.id.loginBtn);
         loginEmail =findViewById(R.id.login_email);
         loginPass = findViewById(R.id.login_password);
-        signUp=findViewById(R.id.signUpTxtView);
+        TextView signUp = findViewById(R.id.signUpTxtView);
+        TextView forgotTV = findViewById(R.id.forgotTv);
         //Initialize the Firebase Authentication instance
         mAuth = FirebaseAuth.getInstance();
         //Initialize the database reference where you have the child node Users
         mDatabaseUsers = FirebaseDatabase.getInstance().getReference().child("Users");
 
         //if user is not registered , register him/her
-        signUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent register = new Intent(LoginActivity.this, RegisterActivity.class);
+        signUp.setOnClickListener(v -> {
+            Intent register = new Intent(LoginActivity.this, RegisterActivity.class);
 
-                startActivity(register);
-            }
+            startActivity(register);
         });
 
         //Set on click listener on the login button
-        loginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(LoginActivity.this, "PROCESSING....", Toast.LENGTH_LONG).show();
-                // get the email and password entered by the user
-                String email = loginEmail.getText().toString().trim();
-                String password = loginPass.getText().toString().trim();
+        loginBtn.setOnClickListener(view -> {
+            Toast.makeText(LoginActivity.this, "PROCESSING....", Toast.LENGTH_LONG).show();
+            // get the email and password entered by the user
+            String email = loginEmail.getText().toString().trim();
+            String password = loginPass.getText().toString().trim();
 
-                if (!TextUtils.isEmpty(email)&& !TextUtils.isEmpty(password)){
-                    // use firebase authentication instance you create and call the method signInWithEmailAndPassword method passing the email and password you got from the views
-                    //Further call the addOnCompleteListener() method to handle the Authentication result
-                    mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()){
-                                //create a method that will check if the user exists in our database reference
-                                checkUserExistence();
-                            }else {
-                                //if the user does not exit in the database reference throw a toast
-                                Toast.makeText(LoginActivity.this, "Couldn't login, User not found", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-                }else {
-                    //if the fields for email and password where not completed show a toast
-                    Toast.makeText(LoginActivity.this, "Complete all fields", Toast.LENGTH_SHORT).show();
-                }
+            if (!TextUtils.isEmpty(email)&& !TextUtils.isEmpty(password)){
+                // use firebase authentication instance you create and call the method signInWithEmailAndPassword method passing the email and password you got from the views
+                //Further call the addOnCompleteListener() method to handle the Authentication result
+                mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        //create a method that will check if the user exists in our database reference
+                        checkUserExistence();
+                    } else {
+                        //if the user does not exit in the database reference throw a toast
+                        Toast.makeText(LoginActivity.this, "Couldn't login, User not found", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }else {
+                //if the fields for email and password where not completed show a toast
+                Toast.makeText(LoginActivity.this, "Complete all fields", Toast.LENGTH_SHORT).show();
             }
         });
+
+        forgotTV.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, ForgetPasswordActivity.class)));
+
     }
     //check if the user exists
     public void checkUserExistence(){
@@ -112,7 +101,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });

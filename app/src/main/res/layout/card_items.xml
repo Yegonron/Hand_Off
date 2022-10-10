@@ -38,7 +38,8 @@
                         android:layout_height="match_parent"
                         android:layout_margin="5dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/icon" />
+                        android:src="@drawable/icon"
+                        android:contentDescription="TODO" />
 
                 </androidx.cardview.widget.CardView>
             </RelativeLayout>
@@ -62,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="40dp"
                 android:layout_marginTop="4dp"
                 android:layout_toRightOf="@id/post_user"
                 android:text="Date"
@@ -75,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/post_user"
                 android:layout_centerVertical="true"
-                android:layout_marginStart="130dp"
+                android:layout_marginStart="140dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="5dp"
                 android:layout_toRightOf="@id/post_user"
@@ -97,7 +98,8 @@
                 android:id="@+id/post_image"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:scaleType="centerCrop" />
+                android:scaleType="centerCrop"
+                android:contentDescription="TODO" />
 
             <TextView
                 android:id="@+id/post_title_txtview"
@@ -128,7 +130,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="#000000"
-                android:src="@drawable/dislike" />
+                android:src="@drawable/dislike"
+                android:contentDescription="TODO" />
 
             <TextView
                 android:id="@+id/likes_display"
@@ -155,7 +158,8 @@
                 android:layout_height="match_parent"
                 android:background="#000000"
                 android:padding="15dp"
-                android:src="@drawable/comment" />
+                android:src="@drawable/comment"
+                android:contentDescription="TODO" />
 
 
         </LinearLayout>

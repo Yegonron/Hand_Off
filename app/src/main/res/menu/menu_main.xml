@@ -2,19 +2,66 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.yegonron.handoff.MainActivity">
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+
     <item
         android:id="@+id/action_add"
         android:icon="@drawable/add_icon"
-        app:showAsAction="always"
-        android:title="Add"/>
+        android:title="Post"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/ic_edit_white"
+        android:title="Profile"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:id="@+id/attendance"
+        android:icon="@drawable/ic_attendance_gray"
+        android:title="Attendance"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:id="@+id/gameFixtures"
+        android:icon="@drawable/ic_calendar_month_gray"
+        android:title="Game Fixtures"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:id="@+id/leagueTable"
+        android:icon="@drawable/ic_attendance_gray"
+        android:title="League Table"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:id="@+id/livestreamGames"
+        android:icon="@drawable/ic_video_library_gray"
+        android:title="Livestream Games"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/ic_settings_white"
+        android:title="Settings"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:id="@+id/help"
+        android:icon="@drawable/ic_help_outline_gray"
+        android:title="Help"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:id="@+id/About_Us"
+        android:icon="@drawable/ic_info_gray"
+        android:title="About Us"
+        tools:ignore="HardcodedText" />
+
     <item
         android:id="@+id/logout"
+        android:icon="@drawable/ic_logout_red"
         android:orderInCategory="100"
         android:title="Logout"
         app:showAsAction="never" />
+
 </menu>

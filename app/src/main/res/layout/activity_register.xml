@@ -10,16 +10,12 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tool_bar"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="60dp"
         android:layout_alignParentTop="true"
         android:background="#000000"
-
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:logo="@mipmap/ic_launcher"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-
-        app:titleTextAppearance="@style/app_title" />
-
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -69,6 +65,17 @@
             android:layout_margin="8dp"
             android:background="@drawable/buttonstyle"
             android:hint="password"
+            android:inputType="textPassword"
+            android:padding="16dp"
+            android:textColor="#000" />
+
+        <EditText
+            android:id="@+id/cPasswordField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@drawable/buttonstyle"
+            android:hint=" confirm password"
             android:inputType="textPassword"
             android:padding="16dp"
             android:textColor="#000" />
